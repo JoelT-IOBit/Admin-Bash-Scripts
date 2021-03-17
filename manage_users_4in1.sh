@@ -60,7 +60,8 @@ create_user () {
 	echo "$user_name created"
 }
 
-# 
+# Create function to check if CSV format file exists
+# There is not validation on the quility of CSV file provided 
 check_file_exists(){
 read -rp "Enter the name of the file in CSV format: " file_to_read
 if [ -z "$file_to_read" ]; then
@@ -70,6 +71,8 @@ else
 [[ -e ./$file_to_read ]]
 fi
 }
+
+# Create function to parse the CSV file and create users and apply the passwords set on that file
 
 create_user_from_list() {
 
@@ -91,7 +94,7 @@ done < <(tail -n +2 $file_to_read)
 
 }
 
-# Create a funtion to delete a user
+# Create a function to delete a user
 delete_user () {
 	# Read the user_name variable from user imput 
 	read -rp "Enter user to delete: " user_name
